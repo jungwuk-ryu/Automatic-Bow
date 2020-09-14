@@ -1,0 +1,5 @@
+name: AutomaticBow
+main: com.Main
+version: 1.0.0
+author: danikhan12, Hancho
+api: [1.0.1]
