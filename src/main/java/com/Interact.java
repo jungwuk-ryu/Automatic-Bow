@@ -5,6 +5,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.item.ItemBow;
 import cn.nukkit.item.ItemID;
+import cn.nukkit.nbt.tag.CompoundTag;
 
 public class Interact implements Listener {
 
@@ -15,6 +16,11 @@ public class Interact implements Listener {
             if (e.getItem().getId() == ItemID.BOW) {
 
                 ItemBow i = (ItemBow) e.getItem();
+
+                CompoundTag nameTag = i.getNamedTag();
+                if(nameTag == null) return;
+                if(!nameTag.contains("autoBow")) return;
+
                 i.onRelease(e.getPlayer(), 20);
             }
         }
