@@ -13,13 +13,12 @@ public class Interact implements Listener {
     public void interact(final PlayerInteractEvent e) {
 
         if (!e.getPlayer().isCreative()) {
+            if(e.getItem() == null) return;
             if (e.getItem().getId() == ItemID.BOW) {
-
                 ItemBow i = (ItemBow) e.getItem();
 
                 CompoundTag nameTag = i.getNamedTag();
-                if(nameTag == null) return;
-                if(!nameTag.contains("autoBow")) return;
+                if(nameTag == null || !nameTag.contains("autoBow")) return;
 
                 i.onRelease(e.getPlayer(), 20);
             }
